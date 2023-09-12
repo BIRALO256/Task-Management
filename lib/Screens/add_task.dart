@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taskmanagement/utils/app_color.dart';
 
+import '../wigdets/button_button.dart';
 import '../wigdets/textfiled_wigdet.dart';
 
 class AddTask extends StatelessWidget {
@@ -8,7 +9,6 @@ class AddTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -39,9 +39,23 @@ class AddTask extends StatelessWidget {
             Column(
               children: [
                 TextfieldWigdet(
-                    controller: TextEditingController(), // Use the dynamic controller
-                    hintTtext: "Task name",
-                    borderRadius: 30)
+                  controller:
+                      TextEditingController(), // Use the dynamic controller
+                  hintTtext: "Task name",
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height / 90),
+                TextfieldWigdet(
+                  controller:
+                      TextEditingController(), // Use the dynamic controller
+                  hintTtext: "Task detail",
+                  borderRadius: 15,
+                  maxlines: 3,
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height / 70),
+                ButtonWigdet(
+                    backgroundcolor: AppColors.mainColor,
+                    text: "Add",
+                    textcolor: Colors.white),
               ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height / 6),
