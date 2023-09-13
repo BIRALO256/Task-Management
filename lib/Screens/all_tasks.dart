@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taskmanagement/utils/app_color.dart';
+import 'package:taskmanagement/wigdets/button_button.dart';
 
 import '../wigdets/task_wigdet.dart';
 
@@ -8,7 +9,26 @@ class ALLTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List myData = ["try harder", "try smarter"];
+    List myData = ["try harder", "try smarter", "  Biralo"];
+
+    final LeftEditIcon = Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      color: const Color(0xFF2e3253).withOpacity(0.5),
+      child: const Icon(
+        Icons.edit,
+        color: Colors.white,
+      ),
+      alignment: Alignment.centerLeft,
+    );
+    final RightdeleteIcon = Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      color: Colors.redAccent,
+      child: const Icon(
+        Icons.delete,
+        color: Colors.white,
+      ),
+      alignment: Alignment.centerRight,
+    );
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -74,9 +94,56 @@ class ALLTasks extends StatelessWidget {
                 itemCount: myData.length,
                 itemBuilder: (context, index) {
                   return Dismissible(
-                    onDismissed: (DismissDirection direction) {},
+                    background: LeftEditIcon,
+                    secondaryBackground: RightdeleteIcon,
+                    onDismissed: (DismissDirection direction) {
+                      print("deleted");
+                    },
                     confirmDismiss: (DismissDirection direction) async {
-                      return false;
+                      if (direction == DismissDirection.startToEnd) {
+                        showModalBottomSheet(
+                            backgroundColor: Colors.transparent,
+                            barrierColor: Colors.transparent,
+                            context: context,
+                            builder: (_) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                    color: AppColors.secondaryColor
+                                        .withOpacity(0.5),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20))),
+                                height:
+                                    MediaQuery.of(context).size.height / 1.9,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 12),
+                                        child: ButtonWigdet(
+                                            backgroundcolor:
+                                                AppColors.mainColor,
+                                            text: "  View",
+                                            textcolor: Colors.white),
+                                      ),
+                                      ButtonWigdet(
+                                          backgroundcolor: AppColors.mainColor,
+                                          text: "Edit",
+                                          textcolor: AppColors.secondaryColor),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            });
+                        return false;
+                      } else {
+                        return Future.delayed(Duration(seconds: 1),
+                            () => direction == DismissDirection.endToStart);
+                      }
                     },
                     key: ObjectKey(index),
                     child: Container(
