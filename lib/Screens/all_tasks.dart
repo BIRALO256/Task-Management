@@ -109,7 +109,7 @@ class ALLTasks extends StatelessWidget {
                               return Container(
                                 decoration: BoxDecoration(
                                     color: AppColors.secondaryColor
-                                        .withOpacity(0.5),
+                                        .withOpacity(0.4),
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20),
                                         topRight: Radius.circular(20))),

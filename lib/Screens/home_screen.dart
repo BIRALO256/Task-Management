@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:taskmanagement/Screens/add_task.dart';
+import 'package:taskmanagement/Screens/all_tasks.dart';
 import 'package:taskmanagement/utils/app_color.dart';
 
 import '../wigdets/button_button.dart';
@@ -26,32 +28,47 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RichText(
-                text: TextSpan(
-                    text: "Hello",
-                    style: TextStyle(
-                        fontSize: 50,
-                        color: AppColors.mainColor,
-                        fontWeight: FontWeight.bold),
-                    children: [
-                      TextSpan(
-                          text: "\n start your beautiful day",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: AppColors.smallTextColor,
-                          ))
-                    ]),
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: RichText(
+                  text: TextSpan(
+                      text: "Hello",
+                      style: TextStyle(
+                          fontSize: 50,
+                          color: AppColors.mainColor,
+                          fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                            text: "\n start your beautiful day",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: AppColors.smallTextColor,
+                            ))
+                      ]),
+                ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height / 2.7),
-              ButtonWigdet(
-                  backgroundcolor: AppColors.mainColor,
-                  text: "Add Task",
-                  textcolor: Colors.white),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const AddTask()));
+                },
+                child: ButtonWigdet(
+                    backgroundcolor: AppColors.mainColor,
+                    text: "Add Task",
+                    textcolor: Colors.white),
+              ),
               const SizedBox(height: 20),
-              ButtonWigdet(
-                  backgroundcolor: AppColors.textGrey,
-                  text: "View All",
-                  textcolor: AppColors.smallTextColor)
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const ALLTasks()));
+                },
+                child: ButtonWigdet(
+                    backgroundcolor: AppColors.textGrey,
+                    text: "View All",
+                    textcolor: AppColors.smallTextColor),
+              )
             ],
           ),
         ),
