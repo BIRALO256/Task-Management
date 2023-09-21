@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 150),
                 child: RichText(
                   text: TextSpan(
                       text: "Hello",
@@ -61,8 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const ALLTasks()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ALLTasks()));
                 },
                 child: ButtonWigdet(
                     backgroundcolor: AppColors.textGrey,
