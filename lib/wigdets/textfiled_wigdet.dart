@@ -7,7 +7,7 @@ class TextfieldWigdet extends StatelessWidget {
   final String hintTtext;
   final double? borderRadius;
   final int? maxlines;
-  TextfieldWigdet(
+  const TextfieldWigdet(
       {super.key,
       required this.controller,
       required this.hintTtext,

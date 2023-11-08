@@ -11,7 +11,7 @@ class ALLTasks extends StatelessWidget {
   Widget build(BuildContext context) {
     List myData = ["try harder", "try smarter", "  Biralo"];
 
-    final LeftEditIcon = Container(
+    final leftEditIcon = Container(
       margin: const EdgeInsets.only(bottom: 10),
       color: const Color(0xFF2e3253).withOpacity(0.5),
       child: const Icon(
@@ -20,7 +20,7 @@ class ALLTasks extends StatelessWidget {
       ),
       alignment: Alignment.centerLeft,
     );
-    final RightdeleteIcon = Container(
+    final rightdeleteIcon = Container(
       margin: const EdgeInsets.only(bottom: 10),
       color: Colors.redAccent,
       child: const Icon(
@@ -94,10 +94,10 @@ class ALLTasks extends StatelessWidget {
                 itemCount: myData.length,
                 itemBuilder: (context, index) {
                   return Dismissible(
-                    background: LeftEditIcon,
-                    secondaryBackground: RightdeleteIcon,
+                    background: leftEditIcon,
+                    secondaryBackground: rightdeleteIcon,
                     onDismissed: (DismissDirection direction) {
-                      print("deleted");
+                      // print("deleted");
                     },
                     confirmDismiss: (DismissDirection direction) async {
                       if (direction == DismissDirection.startToEnd) {
@@ -110,7 +110,7 @@ class ALLTasks extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     color: AppColors.secondaryColor
                                         .withOpacity(0.4),
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(20),
                                         topRight: Radius.circular(20))),
                                 height:
